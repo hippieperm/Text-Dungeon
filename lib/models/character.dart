@@ -6,12 +6,12 @@ class Character {
   int defense;
   bool itemUsed = false;
 
-  Character({
-    required this.name,
-    required this.health,
-    required this.attack,
-    required this.defense,
-  });
+  Character(
+    this.name,
+    this.health,
+    this.attack,
+    this.defense,
+  );
 
   void showStatus() {
     print('[$name] 체력: $health | 공격력: $attack | 방어력: $defense');

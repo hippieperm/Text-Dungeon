@@ -83,6 +83,11 @@ class Game {
     return monsters[random.nextInt(monsters.length)];
   }
 
+  Future<void> battle(Monster monster) async {
+    print('\n===== 전투 시작 =====');
+    print('${character!.name}가 ${monster.name}와 전투를 시작합니다!');
+  }
+
   Future<void> startGame() async {
     print('===== 텍스트 던전 RPG 게임 =====');
 

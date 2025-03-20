@@ -15,7 +15,8 @@ class Character {
     required this.defense,
   });
 
-  void attackMonster(Monster monster) { // 캐릭터 -> 몬스터 공격 로직
+  void attackMonster(Monster monster) {
+    // 캐릭터 -> 몬스터 공격 로직
     int damage = attack - monster.defense;
     if (damage < 0) damage = 0;
 
@@ -23,6 +24,14 @@ class Character {
     if (monster.health < 0) monster.health = 0;
 
     print('$name이(가) ${monster.name}에게 $damage 데미지를 입혔습니다!');
+  }
+
+  void defend(Monster monster) { //캐릭터 방어로직
+    int monsterDamage = monster.attack - defense;
+    if (monsterDamage < 0) monsterDamage = 0;
+
+    health += monsterDamage;
+    print('$name이(가) 방어하여 $monsterDamage만큼 체력을 회복했습니다!');
   }
 
   void showStatus() {

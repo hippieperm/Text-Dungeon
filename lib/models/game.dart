@@ -7,6 +7,7 @@ import 'package:text_dungeon/models/monster.dart';
 class Game {
   Character? character;
   List<Monster> monsters = [];
+  int defeatedMonsters = 0;
   final Random random = Random();
 
   Future<void> loadCharacterStats(String name) async {
@@ -73,6 +74,13 @@ class Game {
     }
 
     return name;
+  }
+
+  Monster getRandomMonster() {
+    if (monsters.isEmpty) {
+      throw Exception('더 이상 몬스터가 없습니다.');
+    }
+    return monsters[random.nextInt(monsters.length)];
   }
 
   Future<void> startGame() async {

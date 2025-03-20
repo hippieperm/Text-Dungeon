@@ -1,6 +1,30 @@
 import 'dart:io';
 
+import 'package:text_dungeon/models/character.dart';
+
 class Game {
+  Character? character;
+
+  Future<void> loadCharacterStats(String name) async {
+    try {
+      final file = File('characters.txt');
+      final contents = file.readAsStringSync();
+      final stats = contents.split(',');
+
+      if (stats.length != 3)
+        throw const FormatException('캐릭터 데이터 형식이 잘못되었습니다.');
+
+      int health = int.parse(stats[0]);
+      int attack = int.parse(stats[1]);
+      int defense = int.parse(stats[2]);
+
+      character = Character(name, health, attack, defense);
+    } catch (e) {
+      print('캐릭터 데이터를 불러오는 데 실패했습니다: $e');
+      exit(1);
+    }
+  }
+
   String getCharacterName() {
     String? name;
     final regex = RegExp(r'^[a-zA-Z가-힣]+$');

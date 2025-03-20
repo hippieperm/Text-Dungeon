@@ -15,7 +15,7 @@ class Character {
     required this.defense,
   });
 
-  void attackMonster(Monster monster) {
+  void attackMonster(Monster monster) { // 캐릭터 -> 몬스터 공격 로직
     int damage = attack - monster.defense;
     if (damage < 0) damage = 0;
 

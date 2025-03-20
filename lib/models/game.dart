@@ -194,4 +194,16 @@ class Game {
     stdout.write('\n결과를 저장하시겠습니까? (y/n): ');
     String? saveInput = stdin.readLineSync()?.toLowerCase();
   }
+
+    void saveResult(String gameResult) { // 저장 로직
+    try {
+      final file = File('result.txt');
+      final content =
+          '캐릭터: ${character!.name}, 남은 체력: ${character!.health}, 결과: $gameResult';
+      file.writeAsStringSync(content);
+      print('결과가 result.txt 파일에 저장되었습니다.');
+    } catch (e) {
+      print('결과를 저장하는 데 실패했습니다: $e');
+    }
+  }
 }

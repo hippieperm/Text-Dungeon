@@ -109,6 +109,29 @@ class Game {
         stdout.write(' 3) 아이템 사용하기');
       }
       stdout.write('\n> ');
+
+      String? input = stdin.readLineSync();
+
+      switch (input) {
+        case '1':
+          character!.attackMonster(monster);
+          break;
+        case '2':
+          character!.defend(monster);
+          break;
+        case '3':
+          if (!character!.itemUsed) {
+            character!.useItem();
+            character!.attackMonster(monster);
+          } else {
+            print('이미 아이템을 사용했습니다. 다시 선택해주세요.');
+            continue;
+          }
+          break;
+        default:
+          print('잘못된 입력입니다. 다시 선택해주세요.');
+          continue;
+      }
     }
   }
 

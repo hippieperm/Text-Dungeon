@@ -12,4 +12,8 @@ class Character {
     required this.attack,
     required this.defense,
   });
+
+  void showStatus() {
+    print('[$name] 체력: $health | 공격력: $attack | 방어력: $defense');
+  }
 }

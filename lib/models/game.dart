@@ -132,6 +132,15 @@ class Game {
           print('잘못된 입력입니다. 다시 선택해주세요.');
           continue;
       }
+
+      monster.attackCharacter(character!);
+
+      if (character!.health <= 0) {
+        print('${character!.name}가 쓰러졌습니다...');
+        break;
+      }
+
+      print('');
     }
   }
 

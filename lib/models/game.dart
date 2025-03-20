@@ -99,6 +99,17 @@ class Game {
   Future<void> battle(Monster monster) async {
     print('\n===== 전투 시작 =====');
     print('${character!.name}가 ${monster.name}와 전투를 시작합니다!');
+
+    while (character!.health > 0 && monster.health > 0) {
+      character!.showStatus();
+      monster.showStatus();
+
+      stdout.write('행동을 선택하세요: 1) 공격하기 2) 방어하기');
+      if (!character!.itemUsed) {
+        stdout.write(' 3) 아이템 사용하기');
+      }
+      stdout.write('\n> ');
+    }
   }
 
   Future<void> startGame() async {

@@ -180,5 +180,15 @@ class Game {
         }
       }
     }
+
+    String result;
+
+    if (defeatedMonsters >= monsters.length || monsters.isEmpty) {
+      result = '승리';
+      print('\n축하합니다! 모든 몬스터를 물리쳤습니다!');
+    } else {
+      result = '패배';
+      print('\n게임 오버! 다음에 다시 도전해보세요.');
+    }
   }
 }

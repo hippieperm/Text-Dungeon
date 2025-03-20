@@ -77,7 +77,12 @@ class Game {
 
   Future<void> startGame() async {
     print('===== 텍스트 던전 RPG 게임 =====');
+
     final name = getCharacterName();
     await loadCharacterStats(name);
+    await loadMonsterStats();
+
+    print('\n게임을 시작합니다!');
+    print('${character!.name}님, 당신은 ${monsters.length}마리의 몬스터를 물리쳐야 합니다.');
   }
 }

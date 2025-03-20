@@ -7,10 +7,11 @@ import 'package:text_dungeon/models/monster.dart';
 class Game {
   Character? character;
   List<Monster> monsters = [];
-  int defeatedMonsters = 0;
+  int defeatedMonsters = 0; //잡은 몬스터 수
   final Random random = Random();
 
   Future<void> loadCharacterStats(String name) async {
+    //캐릭터 정보 로드
     try {
       final file = File('characters.txt');
       final contents = file.readAsStringSync();
@@ -31,6 +32,7 @@ class Game {
   }
 
   Future<void> loadMonsterStats() async {
+    // 몬스터정보 로드
     try {
       final file = File('monsters.txt');
       final contents = file.readAsStringSync();
@@ -59,6 +61,7 @@ class Game {
   }
 
   String getCharacterName() {
+    // 캐릭터 이름 입력받기
     String? name;
     final regex = RegExp(r'^[a-zA-Z가-힣]+$');
 
@@ -77,6 +80,7 @@ class Game {
   }
 
   Monster getRandomMonster() {
+    // 몬스터 랜덤으로 불러오기
     if (monsters.isEmpty) {
       throw Exception('더 이상 몬스터가 없습니다.');
     }
@@ -97,5 +101,24 @@ class Game {
 
     print('\n게임을 시작합니다!');
     print('${character!.name}님, 당신은 ${monsters.length}마리의 몬스터를 물리쳐야 합니다.');
+
+    while (character!.health > 0 &&
+        defeatedMonsters < monsters.length &&
+        monsters.isNotEmpty) {
+      Monster currentMonster = getRandomMonster();
+      await battle(currentMonster);
+
+      if (character!.health <= 0) break;
+
+      if (monsters.isNotEmpty) {
+        stdout.write('다음 몬스터와 대결하시겠습니까? (y/n): ');
+        String? input = stdin.readLineSync()?.toLowerCase();
+
+        if (input != 'y') {
+          print('게임을 종료합니다.');
+          break;
+        }
+      }
+    }
   }
 }

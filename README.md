@@ -38,3 +38,7 @@ dart lib/main.dart
 - `characters.txt`: 캐릭터 기본 스탯 데이터
 - `monsters.txt`: 몬스터 데이터
 - `result.txt`: 게임 결과 저장 파일
+
+
+트러블슈팅
+https://velog.io/@hippieperm/Flutter에서-Named-Parameters와-Positional-Parameters-완벽-이해하기

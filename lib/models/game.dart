@@ -1,9 +1,13 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:text_dungeon/models/character.dart';
+import 'package:text_dungeon/models/monster.dart';
 
 class Game {
   Character? character;
+  List<Monster> monsters = [];
+  final Random random = Random();
 
   Future<void> loadCharacterStats(String name) async {
     try {
@@ -21,6 +25,34 @@ class Game {
       character = Character(name, health, attack, defense);
     } catch (e) {
       print('캐릭터 데이터를 불러오는 데 실패했습니다: $e');
+      exit(1);
+    }
+  }
+
+  Future<void> loadMonsterStats() async {
+    try {
+      final file = File('monsters.txt');
+      final contents = file.readAsStringSync();
+      final monsterLines = contents.split('\n');
+
+      for (final line in monsterLines) {
+        if (line.trim().isEmpty) continue;
+
+        final stats = line.split(',');
+        if (stats.length != 3)
+          throw FormatException('몬스터 데이터 형식이 잘못되었습니다: $line');
+
+        String name = stats[0];
+        int health = int.parse(stats[1]);
+        int maxAttack = int.parse(stats[2]);
+
+        // 몬스터의 공격력은 캐릭터의 방어력보다 작을 수 없음
+        int attack = max(character?.defense ?? 0, random.nextInt(maxAttack));
+
+        monsters.add(Monster(name, health, attack));
+      }
+    } catch (e) {
+      print('몬스터 데이터를 불러오는 데 실패했습니다: $e');
       exit(1);
     }
   }

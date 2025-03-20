@@ -8,11 +8,11 @@ class Monster {
   int defense = 0;
   int turnCount = 0;
 
-  Monster({
-    required this.name,
-    required this.health,
-    required this.attack,
-  });
+  Monster(
+    this.name,
+    this.health,
+    this.attack,
+  );
 
   void attackCharacter(Character character) {
     int demage = attack - character.defense;

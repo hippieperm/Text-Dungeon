@@ -30,4 +30,7 @@ class Monster {
       print('$name의 방어력이 증가했습니다! 현재 방어력: $defense');
     }
   }
+   void showStatus() {
+    print('[$name] 체력: $health | 공격력: $attack | 방어력: $defense');
+  }
 }

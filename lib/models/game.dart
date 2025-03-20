@@ -193,9 +193,12 @@ class Game {
 
     stdout.write('\n결과를 저장하시겠습니까? (y/n): ');
     String? saveInput = stdin.readLineSync()?.toLowerCase();
+
+    if (saveInput == 'y') saveResult(result);
   }
 
-    void saveResult(String gameResult) { // 저장 로직
+  void saveResult(String gameResult) {
+    // 저장 로직
     try {
       final file = File('result.txt');
       final content =

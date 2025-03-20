@@ -24,7 +24,12 @@ class Game {
       int attack = int.parse(stats[1]);
       int defense = int.parse(stats[2]);
 
-      character = Character(name, health, attack, defense);
+      character = Character(
+        name: name,
+        health: health,
+        attack: attack,
+        defense: defense,
+      );
     } catch (e) {
       print('캐릭터 데이터를 불러오는 데 실패했습니다: $e');
       exit(1);
@@ -52,7 +57,11 @@ class Game {
         // 몬스터의 공격력은 캐릭터의 방어력보다 작을 수 없음
         int attack = max(character?.defense ?? 0, random.nextInt(maxAttack));
 
-        monsters.add(Monster(name, health, attack));
+        monsters.add(Monster(
+          name: name,
+          health: health,
+          attack: attack,
+        ));
       }
     } catch (e) {
       print('몬스터 데이터를 불러오는 데 실패했습니다: $e');

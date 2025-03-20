@@ -133,6 +133,14 @@ class Game {
           continue;
       }
 
+      if (monster.health <= 0) {
+        print('${monster.name}을(를) 물리쳤습니다!');
+        defeatedMonsters++;
+        // 처치한 몬스터 제거
+        monsters.remove(monster);
+        break;
+      }
+
       monster.attackCharacter(character!);
 
       if (character!.health <= 0) {

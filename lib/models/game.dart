@@ -190,5 +190,8 @@ class Game {
       result = '패배';
       print('\n게임 오버! 다음에 다시 도전해보세요.');
     }
+
+    stdout.write('\n결과를 저장하시겠습니까? (y/n): ');
+    String? saveInput = stdin.readLineSync()?.toLowerCase();
   }
 }

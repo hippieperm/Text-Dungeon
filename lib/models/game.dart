@@ -43,8 +43,9 @@ class Game {
     return name;
   }
 
-  void startGame() {
+  Future<void> startGame() async {
     print('===== 텍스트 던전 RPG 게임 =====');
     final name = getCharacterName();
+    await loadCharacterStats(name);
   }
 }

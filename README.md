@@ -1,7 +1,8 @@
 # 텍스트 던전 RPG 게임
 
 이 프로젝트는 Dart로 작성된 텍스트 기반 던전 RPG 게임입니다.
-![Uploading 스크린샷 2025-03-21 오전 3.23.39.png…]()
+![스크린샷 2025-03-21 오전 3 23 39](https://github.com/user-attachments/assets/118f1a4b-5683-4dab-903c-05be567a554f)
+
 
 
 ## 기능

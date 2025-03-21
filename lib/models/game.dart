@@ -162,6 +162,8 @@ class Game {
     print('\n게임을 시작합니다!');
     print('${character!.name}님, 당신은 ${monsters.length}마리의 몬스터를 물리쳐야 합니다.');
 
+    giveBonusHealth(character!);
+
     while (character!.health > 0 &&
         defeatedMonsters < monsters.length &&
         monsters.isNotEmpty) {
@@ -207,6 +209,23 @@ class Game {
       print('결과가 result.txt 파일에 저장되었습니다.');
     } catch (e) {
       print('결과를 저장하는 데 실패했습니다: $e');
+    }
+  }
+
+  void giveBonusHealth(Character character) {
+    // Random 객체 생성
+    final random = Random();
+
+    // 0-99 사이의 랜덤 숫자 생성
+    final randomNumber = random.nextInt(100);
+
+    // 30% 확률 체크 (0-29가 나오면 성공)
+    if (randomNumber < 30) {
+      // 체력 10 증가
+      character.health += 10;
+
+      // 결과 출력
+      print('보너스 체력을 얻었습니다! 현재 체력: ${character.health}');
     }
   }
 }
